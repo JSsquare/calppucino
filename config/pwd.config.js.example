@@ -1,0 +1,3 @@
+const myMongoPassword = encodeURIComponent("insert-your-sample-password-here")
+
+module.exports = myMongoPassword
