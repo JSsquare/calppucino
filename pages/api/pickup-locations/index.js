@@ -22,7 +22,7 @@ const pickupRecords =  async (req, res) => {
     
                 res.status(201).json({ success: true, data: pickupLocations })
             } catch (error) {
-                res.status(400).json({ success: false });
+                res.status(400).json({ success: false, error: error });
             }
             break;            
         default: 
