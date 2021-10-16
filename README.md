@@ -35,5 +35,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 ## How To Add Collection and Relation
-- models folder will have all the  Schema
-- /api folder has the api endpoints 
+- /models folder will have all the  Schema defined
+- /api folder has the api endpoints to get and POST
+- Look at the Scheme to find out how to add records using Postman
