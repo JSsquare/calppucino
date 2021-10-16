@@ -16,6 +16,7 @@ const MenuSchema = new mongoose.Schema({
         trim: true,
         maxlength: [300, 'Menu Item Description cannot be more than 300 characters']
     },
+    // Pickup Location will be fetched from apps env variable APP_PICKUP_NAME
     pickupLocation: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, 'Please Add a Pickup Location for this Menu Item'],
