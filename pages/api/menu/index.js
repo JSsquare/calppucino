@@ -9,7 +9,7 @@ const menuRecords =  async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const menu = await Menu.find({})                
+                const menu = await Menu.find()                
                 res.status(200).json({ success: true, data: menu})
             }
             catch (e) {

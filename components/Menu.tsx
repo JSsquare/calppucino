@@ -15,18 +15,20 @@ const Menu = ({ menuItems } : any) => {
         </p>
 
         <div className={styles.grid}>
-          <Card >
-            {menuItems.map((item: any, i: number) => (
-              <div key={i}>
-              <Typography component="div" variant="h5">{item.itemName}</Typography>
-              <Typography variant="subtitle1" color="text.secondary" component="div">
-                {item.itemDescription}
-              </Typography>
-              <p>${item.itemTraits.price}</p>
+            {menuItems.length && (
+                    <Card >
+                    {menuItems.map((item: any, i: number) => (
+                    <div key={i}>
+                    <Typography component="div" variant="h5">{item.itemName}</Typography>
+                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                        {item.itemDescription}
+                    </Typography>
+                    <p>${item.itemTraits.price}</p>
 
-              </div>
-            ))}
-          </Card>
+                    </div>
+                    ))}
+                    </Card>                
+            ) }         
         </div>
       </main>
     );

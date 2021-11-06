@@ -12,7 +12,7 @@ async function dbConnect() {
     });
 
     connection.isConnected = db.connections[0].readyState;
-    console.log(connection.isConnected);
+    console.log(connection.isConnected ? "DB connection established" : "Unable to connect to DB");
 }
 
 export default dbConnect;
