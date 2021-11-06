@@ -34,7 +34,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-## How To Add Collection and Relation
+## How To Add Collections and Relations
 - /models folder will have all the  Schema defined
-- /api folder has the api endpoints to get and POST
-- Look at the Scheme to find out how to add records using Postman
+- pages/api folder has the api endpoints to get and POST
+- Look at the Schema and /api POST requests to find out how to add records using Postman
