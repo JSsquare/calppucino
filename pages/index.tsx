@@ -5,7 +5,7 @@ import Menu from '../components/Menu'
 import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps() { 
-  const res = await fetch(`http://localhost:3000/api/menu`)
+  const res = await fetch(`${process.env.HOST}/api/menu`)
   const { data } = await res.json()
   return { props: { data: data } }
 }
