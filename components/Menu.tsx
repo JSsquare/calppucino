@@ -2,7 +2,7 @@ import styles from '../styles/Home.module.css'
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 
-const Menu = ({ menuItems } : any) => {    
+const Menu = ({ menuItems } : any) => {
     return (
     <main className={styles.main}>
         <h1 className={styles.title}>

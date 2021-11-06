@@ -9,11 +9,11 @@ const pickupRecords =  async (req, res) => {
     switch(method) {
         case 'GET':
             try {
-                const pickupLocations = await PickupLocation.findOne({'name': process.env.APP_PICKUP_NAME})                
-                res.status(200).json({ success: true, data: pickupLocations})
+                const pickupLocations = await PickupLocation.findOne({'name': process.env.APP_PICKUP_NAME})   
+                res.status(200).json({ success: true, data: pickupLocations, pickupname_passed: process.env.APP_PICKUP_NAME})
             }
             catch (e) {
-                res.status(400).json({success: false})
+                res.status(400).json({success: false, pickupname_passed: process.env.APP_PICKUP_NAME})
             }
             break;
         case 'POST':
