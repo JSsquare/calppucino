@@ -16,11 +16,14 @@ const menuRecords =  async (req, res) => {
                 res.status(400).json({success: false, error: e})
             }
             break;
+        /*
+            POST request takes arguments in x-www-form-urlencoded format in the body of the request.
+            TODO: Add documentation on how to pass itemTraits 
+        */
         case 'POST':
             try {
                 const { itemName, itemDescription, itemTraits  } = req.body
                 const thisAppLocation = await PickupLocation.findOne({'name': process.env.APP_PICKUP_NAME}) 
-
                 const menu = await Menu.create({ itemName, itemTraits, itemDescription, pickupLocation: thisAppLocation.id });
     
                 res.status(201).json({ success: true, data: menu })

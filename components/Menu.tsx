@@ -10,24 +10,23 @@ const Menu = ({ menuItems } : any) => {
         </h1>
 
         <p className={styles.description}>
-          Pickup Address{' '}
-          <code className={styles.code}></code>
+          Pickup Address          
         </p>
 
         <div className={styles.grid}>
             {menuItems.length && (
-                    <Card >
+                    <div >
                     {menuItems.map((item: any, i: number) => (
-                    <div key={i}>
+                    <Card key={i} style={{marginTop: '8px'}}>
                     <Typography component="div" variant="h5">{item.itemName}</Typography>
                     <Typography variant="subtitle1" color="text.secondary" component="div">
                         {item.itemDescription}
                     </Typography>
-                    <p>${item.itemTraits.price}</p>
+                    <p>${item.itemTraits?.price}</p>
 
-                    </div>
+                    </Card>
                     ))}
-                    </Card>                
+                    </div>                
             ) }         
         </div>
       </main>
