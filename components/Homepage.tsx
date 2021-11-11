@@ -3,9 +3,8 @@ import Head from 'next/head'
 import Menu from './Menu'
 import styles from '../styles/Home.module.css'
 import { useQuery } from 'react-query'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addMenuItems } from '../features/menu/menuSlice'
-import { RootState } from '../app/store'
 import { useEffect } from 'react'
 
 export const HomePage: NextPage = () => {
@@ -17,8 +16,8 @@ export const HomePage: NextPage = () => {
     const dispatch = useDispatch()           
     useEffect(() => {
         dispatch(addMenuItems(menuItems))
-    }, [menuItems, dispatch]) 
-       
+    }, [menuItems, dispatch])
+
     return (
       <div className={styles.container}>
         <Head>
