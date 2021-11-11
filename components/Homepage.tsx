@@ -3,13 +3,22 @@ import Head from 'next/head'
 import Menu from './Menu'
 import styles from '../styles/Home.module.css'
 import { useQuery } from 'react-query'
+import { useSelector, useDispatch } from 'react-redux'
+import { addMenuItems } from '../features/menu/menuSlice'
+import { RootState } from '../app/store'
+import { useEffect } from 'react'
 
 export const HomePage: NextPage = () => {
-    const { data } = useQuery('getMenu', async () => {
+    const { data: menuItems } = useQuery('getMenu', async () => {
       const res = await fetch(`${process.env.HOST}/api/menu`)
       return res.json()
     })
-    const menuItems = data
+
+    const dispatch = useDispatch()           
+    useEffect(() => {
+        dispatch(addMenuItems(menuItems))
+    }, [menuItems, dispatch]) 
+       
     return (
       <div className={styles.container}>
         <Head>
