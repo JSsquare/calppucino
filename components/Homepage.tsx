@@ -14,7 +14,7 @@ export const HomePage: NextPage = () => {
       return res.json()
     })
 
-    const dispatch = useDispatch()           
+    const dispatch = useDispatch()
     useEffect(() => {
         dispatch(addMenuItems(menuItems))
     }, [menuItems, dispatch])

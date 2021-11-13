@@ -3,11 +3,26 @@ import styles from '../styles/Home.module.css'
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../features/cart/cartSlice'
 
 const Menu = ({ menuItems } : any) => {
+
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (item: any) => {
+    const { id: menuItemId, itemName: menuItemName, itemTraits: { price } } = item
+    const cartItemPayload = {
+      menuItemId,
+      menuItemName,
+      price: Number(price),
+      quantity: 1
+    }
+    dispatch(addItemToCart(cartItemPayload))
+  }
     return (
     <main className={styles.main}>
-        <Typography component="div" variant="h2">
+        <Typography component="div" variant="h3">
           Coffee Menu
         </Typography>
 
@@ -21,7 +36,7 @@ const Menu = ({ menuItems } : any) => {
                         {item.itemDescription}
                     </Typography>
                     <Typography variant="subtitle2" color="text.secondary" component="span">${item.itemTraits?.price}</Typography>
-                    <AddCircleOutlineRoundedIcon />
+                      <AddCircleOutlineRoundedIcon onClick={() => handleAddToCart(item)}/>
                     </MenuCardMUI>
                     ))}
                     </div>                
