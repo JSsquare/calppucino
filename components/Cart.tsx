@@ -1,9 +1,9 @@
+import { useSelector } from 'react-redux'
 import styled from '@emotion/styled'
 import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import { getCartTotalPrice, getNumOfItemsInCart } from '../features/cart/cartSelectors';
-import { useSelector } from 'react-redux'
 import { Typography } from '@mui/material';
 
 const Cart = () => {
@@ -20,10 +20,10 @@ const Cart = () => {
 const RenderCartIcon = ({ itemsLength }: any) => {    
     const moreThanOneItem = itemsLength > 1 && itemsLength !== 0 
     if(itemsLength === 0) {
-        return <RemoveShoppingCartOutlinedIcon/>
+        return <RemoveShoppingCartOutlinedIcon fontSize="large"/>
     }
     return (
-        <>{moreThanOneItem ? <ShoppingCartRoundedIcon /> : <ShoppingCartTwoToneIcon /> }</>
+        <>{moreThanOneItem ? <ShoppingCartRoundedIcon fontSize="large"/> : <ShoppingCartTwoToneIcon fontSize="large" /> }</>
     )
 }
 

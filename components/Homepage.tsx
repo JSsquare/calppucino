@@ -2,22 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Menu from './Menu'
 import styles from '../styles/Home.module.css'
-import { useQuery } from 'react-query'
-import { useDispatch } from 'react-redux'
-import { addMenuItems } from '../features/menu/menuSlice'
-import { useEffect } from 'react'
 import Cart from './Cart'
 
 export const HomePage: NextPage = () => {
-    const { data: menuItems } = useQuery('getMenu', async () => {
-      const res = await fetch(`${process.env.HOST}/api/menu`)
-      return res.json()
-    })
-
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(addMenuItems(menuItems))
-    }, [menuItems, dispatch])
 
     return (
       <div className={styles.container}>
@@ -27,7 +14,7 @@ export const HomePage: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Cart/>
-        <Menu menuItems={menuItems} />        
+        <Menu />        
       </div>
     )
   }
