@@ -14,7 +14,7 @@ const CheckoutModal = ({ checkoutModal, handleCloseCheckoutModal }: any) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style}>
+            <Box sx={style as any}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Confirm Your Purchase
               </Typography>
@@ -26,7 +26,6 @@ const CheckoutModal = ({ checkoutModal, handleCloseCheckoutModal }: any) => {
         </div>
     );
 };
-
 
 const style = {
     position: 'absolute',
