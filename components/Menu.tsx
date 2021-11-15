@@ -11,6 +11,8 @@ import { addMenuItems, updateAddToCartState  } from '../features/menu/menuSlice'
 import { getMenu } from '../features/menu/menuSelectors';
 import { useQuery } from 'react-query';
 import { useEffect } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const Menu = () => {
   const { data: menuItems } = useQuery('getMenu', async () => {
@@ -42,6 +44,11 @@ const Menu = () => {
         </Typography>
 
         <div className={styles.grid}>
+            {menuFromState.length === 0 && 
+              <Box sx={{ display: 'flex' }}>
+                <CircularProgress />
+              </Box>
+            }
             {menuFromState?.length > 0 && (
                     <div >
                     {menuFromState.map((item: any, i: number) => (                    

@@ -15,7 +15,13 @@ export const menuSlice = createSlice({
     initialState,
     reducers: {
         addMenuItems: (menuState: any, action: any) => {
-            menuState.push(...action.payload);
+            try {
+                menuState.push(...action.payload);
+            }
+            catch(e) {
+                console.log(e)
+            }
+            
         },
         updateAddToCartState: (menuState: any, action: any) => { 
             const itemIdInCart = action.payload
