@@ -1,3 +1,5 @@
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import { useSelector } from 'react-redux'
 import styled from '@emotion/styled'
 import styles from '../styles/Home.module.css'
@@ -39,8 +41,8 @@ const Menu = () => {
   }
     return (
     <main className={styles.main}>
-        <Typography component="div" variant="h4">
-          Choose Your Coffee
+        <Typography component="div" variant="h5" style={{color:"#016241", backgroundColor:'white'}}>
+          Bang for your Bucks<sup>$</sup> Coffee Company
         </Typography>
 
         <div className={styles.grid}>
@@ -58,8 +60,11 @@ const Menu = () => {
                         {item.itemDescription}
                     </Typography>
                     <Typography variant="subtitle2" color="text.secondary" component="span">${item.itemTraits?.price}</Typography>
-                    <AddtoCartButtonWrapper>                 
-                      {item.addToCartState ? <CheckCircleOutlineRoundedIcon fontSize="large"/> : <AddCircleOutlineRoundedIcon fontSize="large" onClick={() => handleAddToCart(item)}/>}
+                    <AddtoCartButtonWrapper> 
+                      {item.addToCartState ? <CheckCircleOutlineRoundedIcon fontSize="large"/> :        
+                      (<Fab size="small" color="primary" aria-label="add-to-cart" onClick={() => handleAddToCart(item)}>
+                        <AddIcon />
+                    </Fab>)}
                     </AddtoCartButtonWrapper>                      
                     </MenuCardMUI>
                     ))}
@@ -75,7 +80,7 @@ export default Menu;
 const MenuCardMUI = styled(Card)`
   position: relative;
   margin-top: 16px;
-  padding: 1rem;
+  padding: 2rem 1rem;
   border-radius: 8px;  
   &:hover {
     cursor: pointer;
