@@ -1,10 +1,18 @@
 import styled from '@emotion/styled'
+import { useSelector } from 'react-redux'
+import { getCartItems } from '../features/cart/cartSelectors'
+import { getCartTotalPrice } from '../features/cart/cartSelectors'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Grid from '@mui/material/Grid';
 import ModalUnstyled from '@mui/core/ModalUnstyled';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 
 const CheckoutModal = ({ checkoutModal, handleCloseCheckoutModal }: any) => {
-
+    const cartItems = useSelector(getCartItems)
+    const totalPrice = useSelector(getCartTotalPrice)    
     return (
         <div>
         <StyledModal
@@ -15,11 +23,25 @@ const CheckoutModal = ({ checkoutModal, handleCloseCheckoutModal }: any) => {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style as any}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography id="modal-modal-title" variant="h6" component="h2" align="center">
                 Confirm Your Purchase
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                cart Items To Be Displayed
+              <List disablePadding>
+                    {cartItems.map((item: any) => (
+                        <ListItem key={item.menuItemName} sx={{ py: 1, px: 0 }}>
+                             <ListItemText primary={item.menuItemName} secondary={'Qty: ' + `${item.quantity}`}  />
+                             <Typography variant="body2">${item.price}</Typography>                  
+                        </ListItem>
+                    ))}
+                      <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="Total" />
+          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+            {totalPrice}
+          </Typography>
+        </ListItem>      
+              </List>
+
               </Typography>
             </Box>
           </StyledModal>

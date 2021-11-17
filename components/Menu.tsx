@@ -5,7 +5,6 @@ import styled from '@emotion/styled'
 import styles from '../styles/Home.module.css'
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
-import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../features/cart/cartSlice'
@@ -42,7 +41,7 @@ const Menu = () => {
     return (
     <main className={styles.main}>
         <Typography component="div" variant="h5" style={{color:"#016241", backgroundColor:'white'}}>
-          Bang for your Bucks<sup>$</sup> Coffee Company
+          Bang For Bucks<sup>$</sup> Coffee
         </Typography>
 
         <div className={styles.grid}>
