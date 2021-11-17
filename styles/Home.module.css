@@ -8,8 +8,7 @@
   background-color: #e8eaec;
 }
 
-.main {
-  padding: 2rem;
+.main {  
   flex: 1;
   display: flex;
   flex-direction: column;  
@@ -21,8 +20,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+  max-width: 800px;  
 }
 
 @media (max-width: 600px) {

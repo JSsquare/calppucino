@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux'
 import styled from '@emotion/styled'
-import { headshakeAnimation, jelloAnimation } from '../styles/CommonStyled';
+import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 import Badge from '@mui/material/Badge';
+import Button from '@mui/material/Button';
 import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
+import { Typography } from '@mui/material';
+import { headshakeAnimation, jelloAnimation, bounceInUpAnimation } from '../styles/CommonStyled';
+import { getCartTotalPrice, getNumOfItemsInCart } from '../features/cart/cartSelectors';
+import CheckoutModal from './CheckoutModal';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
-import { getCartTotalPrice, getNumOfItemsInCart } from '../features/cart/cartSelectors';
-import { Typography } from '@mui/material';
-import CheckoutModal from './CheckoutModal';
 
 const Cart = () => {
     const cartTotal = useSelector(getCartTotalPrice)
@@ -23,16 +25,17 @@ const Cart = () => {
     }
 
     return (
-        <CartWrapper >
-            <div onClick={handleCheckoutModal}>
+        <>
+        <CartWrapper onClick={handleCheckoutModal}>
                 <RenderCartIcon />
-                <CartTotalPriceText style={{cursor: 'pointer'}} variant="subtitle2">{cartTotal > 0 && `$${cartTotal}`}</CartTotalPriceText>
-            </div>
-            <CheckoutModal 
+                <CartTotalPriceText style={{cursor: 'pointer'}} variant="subtitle2">{cartTotal > 0 && `$${cartTotal}`}</CartTotalPriceText>            
+        </CartWrapper>
+        {itemsInCart && <RenderCheckoutButton handleCheckoutModal={handleCheckoutModal} />}
+        <CheckoutModal 
                 checkoutModal={checkoutModal} 
                 handleCloseCheckoutModal={handleCloseCheckoutModal}
-            />
-        </CartWrapper>
+        />
+        </>
     );
 };
 
@@ -44,25 +47,28 @@ const RenderCartIcon = () => {
         return <RemoveShoppingCartOutlinedIcon fontSize="large"/>
     }
     return (
-        <>
            <Badge badgeContent={itemsLength} color="error">
             <FilledCartDiv style={{cursor: 'pointer'}}  >
                 {moreThanOneItem ? <MoreThanOneItemCart fontSize="large" /> : <SingleItemCartIcon fontSize="large" /> }
             </FilledCartDiv>
             </Badge>
-        </>
     )
 }
 
+const RenderCheckoutButton = ({ handleCheckoutModal }: any) => {
+    const itemsLength = useSelector(getNumOfItemsInCart)
+    return <CheckoutButton onClick={() => handleCheckoutModal()} variant="contained">Checkout My <Badge badgeContent={itemsLength} ><LocalCafeIcon/></Badge></CheckoutButton>
+}
 
-
-
+const CheckoutButton = styled(Button)`
+    position: absolute;
+    animation-duration: 1.5s;    
+    animation-name: ${bounceInUpAnimation};
+    bottom: 3rem; 
+`
 const CartWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem; 
+
+    margin-top: 2rem;
 `
 
 const FilledCartDiv = styled.div`

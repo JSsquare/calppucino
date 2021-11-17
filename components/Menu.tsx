@@ -40,9 +40,6 @@ const Menu = () => {
   }
     return (
     <main className={styles.main}>
-        <Typography component="div" variant="h5" style={{color:"#016241", backgroundColor:'white'}}>
-          Bang For Bucks<sup>$</sup> Coffee
-        </Typography>
 
         <div className={styles.grid}>
             {menuFromState.length === 0 && 
