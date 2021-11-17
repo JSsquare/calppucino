@@ -12,20 +12,21 @@ import CheckoutModal from './CheckoutModal';
 
 const Cart = () => {
     const cartTotal = useSelector(getCartTotalPrice)
+    const itemsInCart = useSelector(getNumOfItemsInCart) !== 0
     const [checkoutModal, setCheckoutModal] = useState(false)
     const handleCloseCheckoutModal = () => {
         setCheckoutModal(false) 
     }
 
     const handleCheckoutModal = () => {
-        setCheckoutModal(true)
+        if(itemsInCart) setCheckoutModal(true)
     }
 
     return (
         <CartWrapper >
             <div onClick={handleCheckoutModal}>
-            <RenderCartIcon />
-            <CartTotalPriceText style={{cursor: 'pointer'}} variant="subtitle2">{cartTotal > 0 && `$${cartTotal}`}</CartTotalPriceText>
+                <RenderCartIcon />
+                <CartTotalPriceText style={{cursor: 'pointer'}} variant="subtitle2">{cartTotal > 0 && `$${cartTotal}`}</CartTotalPriceText>
             </div>
             <CheckoutModal 
                 checkoutModal={checkoutModal} 
