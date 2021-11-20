@@ -6,7 +6,7 @@ import Badge from '@mui/material/Badge';
 import Button from '@mui/material/Button';
 import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
 import { Typography } from '@mui/material';
-import { headshakeAnimation, jelloAnimation, bounceInUpAnimation } from '../styles/CommonStyled';
+import { headshakeAnimation, jelloAnimation, bounceInUpAnimation } from '../styles/AnimationsStyled';
 import { getCartTotalPrice, getNumOfItemsInCart } from '../features/cart/cartSelectors';
 import CheckoutModal from './CheckoutModal';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
