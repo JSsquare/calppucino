@@ -68,7 +68,7 @@ const WorkInProgress = () => {
 
       <Snackbar open={isNumberCopied} autoHideDuration={6000} onClose={handleCloseSnackBar as any}>
         <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
-          Copied! Text the number and get your 99c Coffee tomorrow
+          Copied! Text to pick-up your 99c coffee now!
         </Alert>
       </Snackbar>               
         </WIPContainer>
