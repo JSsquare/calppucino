@@ -1,7 +1,7 @@
 import { forwardRef, useRef, useState } from 'react';
 import styled from '@emotion/styled'
 import Button from '@mui/material/Button';
-import ConstructionIcon from '@mui/icons-material/Construction';
+import HourglassEmptyTwoToneIcon from '@mui/icons-material/HourglassEmptyTwoTone';
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Typography } from '@mui/material';
@@ -36,8 +36,8 @@ const WorkInProgress = () => {
           color="text.primary"
           gutterBottom
         >
-          Website is work-in-progress
-          <ConstructionIcon fontSize="large"/>
+          Website to launch soon...  &nbsp;
+          <HourglassEmptyTwoToneIcon fontSize="large"/>
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p" gutterBottom>
           Call or text now! <br/> Pick-up your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow in Albany
