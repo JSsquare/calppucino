@@ -31,7 +31,7 @@ const WorkInProgress = () => {
         <WIPContainer>
         <Typography
           component="h1"
-          variant="h2"
+          variant="h3"
           align="center"
           color="text.primary"
           gutterBottom
@@ -40,7 +40,7 @@ const WorkInProgress = () => {
           <ConstructionIcon fontSize="large"/>
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p" gutterBottom>
-          Call or text now & pick-up your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow
+          Call or text now! <br/> Pick-up your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow in Albany
         </Typography>
 
         <Typography 
