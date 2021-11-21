@@ -14,7 +14,7 @@ const WorkInProgress = () => {
     const isNumberCopied = Boolean(phNumberCopied)
     const phNumberRef = useRef(null);
 
-    const copyPhoneNumber = (e) => {
+    const copyPhoneNumber = () => {
         navigator.clipboard.writeText('917-679-1655')
         setPhNumberCopied('Contact Number Copied')
     }
