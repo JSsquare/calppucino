@@ -45,7 +45,6 @@ const Menu = () => {
   }  
     return (
     <main className={styles.main}>
-
         <div className={styles.grid}>
             {menuFromState.length === 0 && 
               <Box sx={{ display: 'flex' }}>

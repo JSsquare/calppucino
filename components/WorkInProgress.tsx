@@ -3,9 +3,9 @@ import styled from '@emotion/styled'
 import Button from '@mui/material/Button';
 import HourglassEmptyTwoToneIcon from '@mui/icons-material/HourglassEmptyTwoTone';
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 import { Typography } from '@mui/material';
-import { jelloAnimation } from '../styles/AnimationsStyled';
+import { headshakeAnimation, jelloAnimation } from '../styles/AnimationsStyled';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Menu from './Menu';
@@ -15,10 +15,11 @@ const WorkInProgress = () => {
     const isNumberCopied = Boolean(phNumberCopied)
     const phNumberRef = useRef(null);
 
+    /* can use this method to add a copy phone number button
     const copyPhoneNumber = () => {
         navigator.clipboard.writeText('917-679-1655')
         setPhNumberCopied('Contact Number Copied')
-    }
+    } */
 
     const handleCloseSnackBar = (event: any, reason: any) => {
         if (reason === 'clickaway') {
@@ -40,8 +41,8 @@ const WorkInProgress = () => {
           Website to launch soon...  &nbsp;
           <HourglassEmptyTwoToneIcon fontSize="large"/>
         </Typography>
-        <Typography variant="h5" align="center" color="text.secondary" component="p" gutterBottom>
-          Call or text <br/> to order your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow in Albany
+        <Typography variant="h6" align="center" color="text.secondary" component="p" gutterBottom>
+          Meanwhile please call text to <br/> order your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow from UC Village
         </Typography>
 
         <Typography 
@@ -57,14 +58,16 @@ const WorkInProgress = () => {
         <CTAButtonWrapper>
         <JelloAnimationsWrapper>
           <Button variant="contained" href="tel:9176791655" style={{ alignSelf: 'center' }}>
-            Call <WifiCalling3Icon />
+            Call us <WifiCalling3Icon />
           </Button>
-          </JelloAnimationsWrapper>             
-         <Button variant="contained" onClick={copyPhoneNumber} style={{ alignSelf: 'center' }}
-           disabled={isNumberCopied}>
-            {!isNumberCopied && <ContentCopyIcon/>}
-            {isNumberCopied ? 'Copied!' : 'Copy number'}            
-          </Button>
+          </JelloAnimationsWrapper>
+        <HeadShakeAnimationWrapper>  
+        <Button variant="contained" 
+                href="sms:+19176791655"
+                style={{ alignSelf: 'center' }}>
+                  Text us <TextsmsOutlinedIcon />
+        </Button>
+        </HeadShakeAnimationWrapper>
         </CTAButtonWrapper>
         <Menu />
 
@@ -90,11 +93,20 @@ const WIPContainer = styled.div`
 `
 const JelloAnimationsWrapper = styled.div`
     animation-duration: .7s;
-    animation-delay: 2s;
+    animation-delay: 1.5s;
     animation-iteration-count: 2;
     animation-name: ${jelloAnimation};
     transform-origin: center;
     align-self: center;
+`
+
+const HeadShakeAnimationWrapper = styled.div`
+  animation-duration: .7s;
+  animation-delay: 3.5s;
+  animation-iteration-count: 2;
+  animation-name: ${headshakeAnimation};
+  transform-origin: center;
+  align-self: center;
 `
 
 export default WorkInProgress;

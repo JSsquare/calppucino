@@ -1,15 +1,16 @@
+import dynamic from 'next/dynamic'
 import { useState } from 'react';
 import { useSelector } from 'react-redux'
 import styled from '@emotion/styled'
 import Badge from '@mui/material/Badge';
 import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
 import { Typography } from '@mui/material';
-import { headshakeAnimation, jelloAnimation, bounceInUpAnimation } from '../styles/AnimationsStyled';
+import { headshakeAnimation, jelloAnimation } from '../styles/AnimationsStyled';
 import { getCartTotalPrice, getNumOfItemsInCart } from '../features/cart/cartSelectors';
-import CheckoutModal from './CheckoutModal';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
-import { BounceInCheckoutButton } from './BounceInCheckoutButton';
+const DynamicCheckoutModal = dynamic(() => import('./CheckoutModal'))
+const DynamicBounceInCheckoutButton = dynamic(() => import('./BounceInCheckoutButton'))
 
 const Cart = () => {
     const cartTotal = useSelector(getCartTotalPrice)
@@ -29,8 +30,8 @@ const Cart = () => {
                 <RenderCartIcon />
                 <CartTotalPriceText style={{cursor: 'pointer'}} variant="subtitle2">{cartTotal > 0 && `$${cartTotal}`}</CartTotalPriceText>            
         </CartWrapper>        
-        {isOneItemInCart && <BounceInCheckoutButton handleCheckoutModal={handleCheckoutModal} />}
-        <CheckoutModal 
+        {isOneItemInCart && <DynamicBounceInCheckoutButton handleCheckoutModal={handleCheckoutModal} />}
+        <DynamicCheckoutModal 
                 checkoutModal={checkoutModal} 
                 handleCloseCheckoutModal={handleCloseCheckoutModal}
         />

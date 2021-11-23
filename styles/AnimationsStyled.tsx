@@ -64,10 +64,10 @@ export const bounceInUpAnimation = keyframes`
     }
     60% {
        opacity: 1;
-       transform: translateY(-30px);
+       transform: translateY(-100px);
     }
     80% {
-       transform: translateY(10px);
+       transform: translateY(30px);
     }
     100% {
        transform: translateY(0);
