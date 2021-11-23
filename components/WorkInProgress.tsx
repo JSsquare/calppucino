@@ -8,6 +8,7 @@ import { Typography } from '@mui/material';
 import { jelloAnimation } from '../styles/AnimationsStyled';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import Menu from './Menu';
 
 const WorkInProgress = () => {
     const [phNumberCopied, setPhNumberCopied] = useState('')
@@ -31,7 +32,7 @@ const WorkInProgress = () => {
         <WIPContainer>
         <Typography
           component="h1"
-          variant="h3"
+          variant="h4"
           align="center"
           color="text.primary"
           gutterBottom
@@ -40,7 +41,7 @@ const WorkInProgress = () => {
           <HourglassEmptyTwoToneIcon fontSize="large"/>
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p" gutterBottom>
-          Call or text now! <br/> Pick-up your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow in Albany
+          Call or text <br/> to order your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow in Albany
         </Typography>
 
         <Typography 
@@ -48,7 +49,7 @@ const WorkInProgress = () => {
             align="center" 
             color="text.primary" 
             component="p" 
-            sx={{ marginTop: 5}}
+            sx={{ marginTop: 2}}
             ref={phNumberRef}
         >
           +1-917-679-1655 
@@ -64,7 +65,8 @@ const WorkInProgress = () => {
             {!isNumberCopied && <ContentCopyIcon/>}
             {isNumberCopied ? 'Copied!' : 'Copy number'}            
           </Button>
-          </CTAButtonWrapper>   
+        </CTAButtonWrapper>
+        <Menu />
 
       <Snackbar open={isNumberCopied} autoHideDuration={6000} onClose={handleCloseSnackBar as any}>
         <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
@@ -84,7 +86,7 @@ const CTAButtonWrapper = styled.div`
 const WIPContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 5%;
 `
 const JelloAnimationsWrapper = styled.div`
     animation-duration: .7s;
