@@ -12,3 +12,17 @@ export const APP_CONSTANTS = {
         SALE_PRICE: 'Only 1 cup left!',
     }
 }
+
+const customers = [
+    {
+        name: 'Sara/Andreas',
+        number: '3413338496'
+    },
+    {
+        name: 'tbd',
+        number: '7144253992'
+    }, {
+        name: 'Aditya',
+        number: '5105705498'
+    }
+]
