@@ -7,7 +7,7 @@ export const APP_CONSTANTS = {
     OFFER_INFO: {
         ACTIVE: true,
         ITEM: 'Calpresso',
-        ITEM_DESC: 'Just a fancy name for regular coffee brewed in an Aeropress.',
+        ITEM_DESC: 'Just a fancy name for freshly brewed coffee with an Aeropress.',
         REG_PRICE: '$1.99',
         SALE_PRICE: 'Only 3 cups left!',
     }
