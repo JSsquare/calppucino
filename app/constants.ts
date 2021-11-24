@@ -3,7 +3,7 @@ import HourglassEmptyTwoToneIcon from '@mui/icons-material/HourglassEmptyTwoTone
 export const APP_CONSTANTS = {
     WIP: true,
     HEADER_TITLE: 'Happy Thanksgiving ',
-    WIP_DESCRIPTION: 'Order you FREE coffee at UC Village today!',
+    WIP_DESCRIPTION: 'Order your FREE coffee at UC Village today!',
     OFFER_INFO: {
         ACTIVE: true,
         ITEM: 'Calpresso',
