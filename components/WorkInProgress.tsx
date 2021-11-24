@@ -1,16 +1,20 @@
 import { forwardRef, useRef, useState } from 'react';
+import { teal } from '@mui/material/colors';
 import styled from '@emotion/styled'
 import Button from '@mui/material/Button';
-import HourglassEmptyTwoToneIcon from '@mui/icons-material/HourglassEmptyTwoTone';
+import CelebrationTwoToneIcon from '@mui/icons-material/CelebrationTwoTone';
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
-import { Typography } from '@mui/material';
+import { Card, CardHeader, Divider, Grid, Typography } from '@mui/material';
 import { headshakeAnimation, jelloAnimation } from '../styles/AnimationsStyled';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Menu from './Menu';
+import { APP_CONSTANTS } from '../app/constants';
+import OfferItemCard from './WIPComponents/OfferItemCard';
 
 const WorkInProgress = () => {
+    const { OFFER_INFO } = APP_CONSTANTS
     const [phNumberCopied, setPhNumberCopied] = useState('')
     const isNumberCopied = Boolean(phNumberCopied)
     const phNumberRef = useRef(null);
@@ -25,7 +29,6 @@ const WorkInProgress = () => {
         if (reason === 'clickaway') {
           return;
         }
-    
         setPhNumberCopied('');
       };
 
@@ -35,21 +38,22 @@ const WorkInProgress = () => {
           component="h1"
           variant="h4"
           align="center"
-          color="text.primary"
+          color={teal[700]}
           gutterBottom
         >
-          Website to launch soon...  &nbsp;
-          <HourglassEmptyTwoToneIcon fontSize="large"/>
+          <CelebrationTwoToneIcon fontSize="large"/>
+          &nbsp; {APP_CONSTANTS.HEADER_TITLE}  &nbsp;
+          <CelebrationTwoToneIcon fontSize="large"/>
         </Typography>
-        <Typography variant="h6" align="center" color="text.secondary" component="p" gutterBottom>
-          Meanwhile please call text to <br/> order your 0.99<sup><Typography variant="caption">$</Typography></sup> coffee tomorrow from UC Village
+        <Typography variant="h6" align="center" color={teal[700]}  component="p" gutterBottom>
+          {APP_CONSTANTS.WIP_DESCRIPTION}          
         </Typography>
 
         <Typography 
-            variant="h6" 
+            variant="subtitle1" 
             align="center" 
-            color="text.primary" 
-            component="p" 
+            color={teal[700]} 
+            component="p"            
             sx={{ marginTop: 2}}
             ref={phNumberRef}
         >
@@ -57,19 +61,25 @@ const WorkInProgress = () => {
         </Typography> 
         <CTAButtonWrapper>
         <JelloAnimationsWrapper>
-          <Button variant="contained" href="tel:9176791655" style={{ alignSelf: 'center' }}>
+          <Button 
+            variant="outlined"
+            color="error"
+            href="tel:9176791655"          
+            style={{ alignSelf: 'center' }}>
             Call us <WifiCalling3Icon />
           </Button>
           </JelloAnimationsWrapper>
         <HeadShakeAnimationWrapper>  
-        <Button variant="contained" 
-                href="sms:+19176791655"
-                style={{ alignSelf: 'center' }}>
+        <Button 
+          variant="outlined"
+          color="error"
+          href="sms:+19176791655&body:Hi%2C%20Please%20place%201%20order%20of%20Free%20coffee%20at%20UC%20Village.%20My%20name%20is%20"
+          style={{ alignSelf: 'center' }}>
                   Text us <TextsmsOutlinedIcon />
         </Button>
         </HeadShakeAnimationWrapper>
         </CTAButtonWrapper>
-        <Menu />
+        {OFFER_INFO.ACTIVE ? <OfferItemCard /> : <Menu />}        
 
       <Snackbar open={isNumberCopied} autoHideDuration={6000} onClose={handleCloseSnackBar as any}>
         <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>
