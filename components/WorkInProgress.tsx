@@ -1,11 +1,11 @@
 import { forwardRef, useRef, useState } from 'react';
-import { teal } from '@mui/material/colors';
+import { teal, red } from '@mui/material/colors';
 import styled from '@emotion/styled'
 import Button from '@mui/material/Button';
 import CelebrationTwoToneIcon from '@mui/icons-material/CelebrationTwoTone';
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
-import { Card, CardHeader, Divider, Grid, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { headshakeAnimation, jelloAnimation } from '../styles/AnimationsStyled';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -15,6 +15,8 @@ import OfferItemCard from './WIPComponents/OfferItemCard';
 
 const WorkInProgress = () => {
     const { OFFER_INFO } = APP_CONSTANTS
+    const isOfferActive = OFFER_INFO.ACTIVE
+    const isSoldOut = OFFER_INFO.SOLD_OUT
     const [phNumberCopied, setPhNumberCopied] = useState('')
     const isNumberCopied = Boolean(phNumberCopied)
     const phNumberRef = useRef(null);
@@ -45,11 +47,11 @@ const WorkInProgress = () => {
           &nbsp; {APP_CONSTANTS.HEADER_TITLE}  &nbsp;
           <CelebrationTwoToneIcon fontSize="large"/>
         </Typography>
-        <Typography variant="h6" align="center" color={teal[700]}  component="p" gutterBottom>
-          {APP_CONSTANTS.WIP_DESCRIPTION}          
+        <Typography variant="h6" align="center" color={isSoldOut ? red[500] : teal[700]}  component="p" gutterBottom>
+          {isSoldOut ? APP_CONSTANTS.SOLDOUT_DESCRIPTION : APP_CONSTANTS.WIP_DESCRIPTION}          
         </Typography>
 
-        <Typography 
+        {!isSoldOut && (<Typography 
             variant="subtitle1" 
             align="center" 
             color={teal[700]} 
@@ -57,14 +59,15 @@ const WorkInProgress = () => {
             sx={{ marginTop: 2}}
             ref={phNumberRef}
         >
-          +1-917-679-1655 
-        </Typography> 
+          +1-917-679-1655
+        </Typography>)}
         <CTAButtonWrapper>
         <JelloAnimationsWrapper>
           <Button 
             variant="outlined"
             color="error"
-            href="tel:9176791655"          
+            href="tel:9176791655" 
+            disabled={isSoldOut}         
             style={{ alignSelf: 'center' }}>
             Call us <WifiCalling3Icon />
           </Button>
@@ -73,13 +76,14 @@ const WorkInProgress = () => {
         <Button 
           variant="outlined"
           color="error"
+          disabled={isSoldOut}
           href="sms:+19176791655?body=Hi%20I%20would%20like%20to%20place%20an%20order%20for%20a%20coffee.%20My%20name%20is%20"
           style={{ alignSelf: 'center' }}>
                   Text us <TextsmsOutlinedIcon />
         </Button>
         </HeadShakeAnimationWrapper>
         </CTAButtonWrapper>
-        {OFFER_INFO.ACTIVE ? <OfferItemCard /> : <Menu />}        
+        {isOfferActive ? <OfferItemCard /> : <Menu />}        
 
       <Snackbar open={isNumberCopied} autoHideDuration={6000} onClose={handleCloseSnackBar as any}>
         <Alert onClose={handleCloseSnackBar} severity="success" sx={{ width: '100%' }}>

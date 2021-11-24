@@ -5,6 +5,7 @@ import { APP_CONSTANTS } from '../../app/constants';
 
 const OfferItemCard = () => {
   const { OFFER_INFO } = APP_CONSTANTS
+  const isSoldOut = OFFER_INFO.SOLD_OUT
 return (
         <CardWrapper>
         <a href="sms:+19176791655">
@@ -24,7 +25,7 @@ return (
                 variant="subtitle2" 
                 component="p"
                 color={red[700]}
-                >{OFFER_INFO.SALE_PRICE} &nbsp;</Typography> 
+                >{isSoldOut ? 'Sorry! SOLD OUT' : OFFER_INFO.SALE_PRICE} &nbsp;</Typography> 
             </Grid>
             </Grid>
             <Divider />
