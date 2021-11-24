@@ -73,7 +73,7 @@ const WorkInProgress = () => {
         <Button 
           variant="outlined"
           color="error"
-          href="sms:+19176791655?body=Hi%20please%20place%20an%20order%20for%20a%20coffee.%20My%20name%20is%20"
+          href="sms:+19176791655?body=Hi%20I%20would%20like%20to%20place%20an%20order%20for%20a%20coffee.%20My%20name%20is%20"
           style={{ alignSelf: 'center' }}>
                   Text us <TextsmsOutlinedIcon />
         </Button>
