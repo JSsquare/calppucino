@@ -5,7 +5,7 @@ import { APP_CONSTANTS } from '../../app/constants';
 
 const OfferItemCard = () => {
   const { OFFER_INFO } = APP_CONSTANTS
-  const isSoldOut = OFFER_INFO.SOLD_OUT
+  const {SOLD_OUT: isSoldOut } = OFFER_INFO
 return (
         <CardWrapper>
         <a href="sms:+19176791655">

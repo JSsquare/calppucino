@@ -1,6 +1,6 @@
 export const APP_CONSTANTS = {
     WIP: true,
-    HEADER_TITLE: 'Happy Thanksgiving ',
+    HEADER_TITLE: ' Coffee Giveaway ',
     WIP_DESCRIPTION: 'Order your FREE coffee at UC Village today!',
     SOLDOUT_DESCRIPTION: 'Sorry! We SOLD OUT for today. Come Back tomorrow',
     OFFER_INFO: {
