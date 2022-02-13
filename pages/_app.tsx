@@ -7,7 +7,7 @@ import { store } from '../app/store'
 import { Provider } from 'react-redux'
 
 const GoogleTagManagerArgs = {
-  trackingId: 'G-NBF0KS904L'
+  trackingId: 'GTM-KKXNTBM'
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
