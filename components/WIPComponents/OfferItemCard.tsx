@@ -1,19 +1,15 @@
 import { Card, CardHeader, Divider, Grid, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { styled } from '@mui/system';
-import { useQuery } from 'react-query';
 import { APP_CONSTANTS } from '../../app/constants';
-import { pluralize } from '../../app/utils/format';
 
-const OfferItemCard = () => {
-  const { data: offerItems } = useQuery('getOfferItems', async () => {
-    const res = await fetch(`${process.env.HOST}/api/offer-items`)
-    return res.json()    
-  })
-  const numberOfCupsLeft = offerItems ? offerItems[0]?.cupsLeft : 0
+type Props = {
+  isSoldOut: boolean
+  cupsLeftText: string
+}
+const OfferItemCard = ({ isSoldOut, cupsLeftText }: Props) => {  
   const { OFFER_INFO } = APP_CONSTANTS
-  const {SOLD_OUT: isSoldOut } = OFFER_INFO
-  const cupsLeftText = `Only ${pluralize(numberOfCupsLeft, 'cup')} left!`
+  
 return (
         <CardWrapper id="offer-item-card-wrapper">
         <a href="sms:+19176791655" id="offer-item-card-link">

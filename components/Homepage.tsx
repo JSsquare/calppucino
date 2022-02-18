@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 import Cart from './Cart'
 import { Typography } from '@mui/material';
 import { APP_CONSTANTS } from '../app/constants'
-import WorkInProgress from './WorkInProgress';
+import WorkInProgress from './WIPComponents/WorkInProgress';
 
 export const HomePage: NextPage = () => {
     const { WIP } = APP_CONSTANTS
