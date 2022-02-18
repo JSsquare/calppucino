@@ -7,9 +7,9 @@ const OfferItemCard = () => {
   const { OFFER_INFO } = APP_CONSTANTS
   const {SOLD_OUT: isSoldOut } = OFFER_INFO
 return (
-        <CardWrapper>
-        <a href="sms:+19176791655">
-            <Grid container alignItems="center">  
+        <CardWrapper id="offer-item-card-wrapper">
+        <a href="sms:+19176791655" id="offer-item-card-link">
+            <Grid container alignItems="center" id="offer-item-card-item">  
             <Grid item xs>
             <CardHeader title={OFFER_INFO.ITEM} />
             </Grid>
