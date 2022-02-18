@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { HomePage } from '../components/Homepage'
 import { dehydrate, QueryClient } from 'react-query';
+import { APP_CONSTANTS } from '../app/constants';
 
 /* 
   Followed ReactQuery Hydration(https://react-query.tanstack.com/guides/ssr#using-hydration)
@@ -8,12 +9,21 @@ import { dehydrate, QueryClient } from 'react-query';
     - then dehydrating those queries to the queryClient
 */
 export async function getServerSideProps() {
+  const { OFFER_INFO } = APP_CONSTANTS
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery('getMenu', async () => {
-    const res = await fetch(`${process.env.HOST}/api/menu`)
-    const { data } = await res.json()
-    return data
-  })
+  if(OFFER_INFO.OFFER_ACTIVE) {
+    await queryClient.prefetchQuery('getOfferItems', async () => {
+      const res = await fetch(`${process.env.HOST}/api/offer-items`)
+      const { data } = await res.json()
+      return data
+    })
+  } else {
+    await queryClient.prefetchQuery('getMenu', async () => {
+      const res = await fetch(`${process.env.HOST}/api/menu`)
+      const { data } = await res.json()
+      return data
+    })
+  }
   
   return { props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) } }
 }

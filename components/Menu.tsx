@@ -25,6 +25,7 @@ const Menu = () => {
     const res = await fetch(`${process.env.HOST}/api/menu`)      
     return res.json()
   })
+
   const dispatch = useDispatch()
   useEffect(() => {        
       dispatch(addMenuItems(menuItems))

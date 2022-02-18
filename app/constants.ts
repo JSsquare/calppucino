@@ -9,7 +9,7 @@ export const APP_CONSTANTS = {
         ITEM_DESC: 'Just a fancy name for freshly brewed coffee with an Aeropress.',
         REG_PRICE: '$1.99',
         SALE_PRICE: 'only 1 cup left!',
-        SOLD_OUT: true
+        SOLD_OUT: false
     }
 }
 
