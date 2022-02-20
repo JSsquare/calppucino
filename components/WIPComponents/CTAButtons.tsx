@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import { isMobile, MobileView } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 import styled from '@emotion/styled'
-import { Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
@@ -54,15 +54,23 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     return (
         <>
            <DesktopViewButtonWrapper>
-            <OrderButton 
-              variant="outlined"
-              color="error"
-              href="https://forms.gle/hBTZw5r3qz9ZXsEE8" 
-              disabled={isSoldOut}
-              target="_blank"
-              id='offer-button_order-form'
-              style={{ alignSelf: 'center' }}>
+            <OrderButton
+                variant='outlined'
+                color="error"
+                disabled={isSoldOut}
+                id='offer-button_order-form-button'
+            >
+            {/* had to add a link component to get the target=_blank right     */}
+            <OrderLink
+                style={{ alignSelf: 'center' }}
+                variant="body2"
+                color="inherit"
+                id='offer-button_order-form-link'
+                href="https://forms.gle/hBTZw5r3qz9ZXsEE8"                 
+                target="_blank"
+                underline="none">
               <LocalCafeTwoToneIcon /> Order My Cup
+            </OrderLink>
             </OrderButton>
             </DesktopViewButtonWrapper>
         </>
@@ -79,6 +87,14 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     margin: 8px;
   `
   const OrderButton = styled(Button)`
+    animation-duration: .7s;
+    animation-delay: 1.5s;
+    animation-iteration-count: 2;
+    animation-name: ${headshakeAnimation};
+    transform-origin: center;
+    align-self: center;    
+  `
+  const OrderLink = styled(Link)`
     animation-duration: .7s;
     animation-delay: 1.5s;
     animation-iteration-count: 2;
