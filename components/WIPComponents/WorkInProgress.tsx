@@ -22,7 +22,6 @@ const WorkInProgress = () => {
     const { OFFER_INFO } = APP_CONSTANTS
     const isOfferActive = OFFER_INFO.OFFER_ACTIVE
     const isSoldOut = OFFER_INFO.SOLD_OUT || numberOfCupsLeft <= 0
-    const phNumberRef = useRef(null);
 
     return (
         <WIPContainer>
@@ -42,16 +41,6 @@ const WorkInProgress = () => {
           {isSoldOut ? APP_CONSTANTS.SOLDOUT_DESCRIPTION : APP_CONSTANTS.WIP_DESCRIPTION}          
         </Typography>
 
-        {!isSoldOut && (<Typography 
-            variant="subtitle1" 
-            align="center" 
-            color={teal[700]} 
-            component="p"            
-            sx={{ marginTop: 2}}
-            ref={phNumberRef}
-        >
-          +1-917-679-1655
-        </Typography>)}
         <CTAButtons isSoldOut={isSoldOut} />
         {isOfferActive ? <OfferItemCard isSoldOut={isSoldOut} cupsLeftText={cupsLeftText} /> : <Menu />}     
         </WIPContainer>
