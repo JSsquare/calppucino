@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { isMobile } from 'react-device-detect';
+import { isMobile, MobileView } from 'react-device-detect';
 import styled from '@emotion/styled'
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -54,7 +54,7 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     return (
         <>
            <DesktopViewButtonWrapper>
-            <Button 
+            <OrderButton 
               variant="outlined"
               color="error"
               href="https://forms.gle/hBTZw5r3qz9ZXsEE8" 
@@ -63,7 +63,7 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
               id='offer-button_order-form'
               style={{ alignSelf: 'center' }}>
               <LocalCafeTwoToneIcon /> Order My Cup
-            </Button>
+            </OrderButton>
             </DesktopViewButtonWrapper>
         </>
         )
@@ -75,16 +75,17 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     gap: 16px;    
   `
   const MobileViewButtonWrapper = styled(ButtonWrapper)``
-  const DesktopViewButtonWrapper = styled(ButtonWrapper)`
+  const DesktopViewButtonWrapper = styled(ButtonWrapper)` 
     margin: 8px;
+  `
+  const OrderButton = styled(Button)`
     animation-duration: .7s;
     animation-delay: 1.5s;
     animation-iteration-count: 2;
     animation-name: ${headshakeAnimation};
     transform-origin: center;
-    align-self: center;
+    align-self: center;    
   `
-
   // TODO refer styles/AnimationsStyled.tsx
   const JelloAnimationsWrapper = styled.div`
     animation-duration: .7s;
