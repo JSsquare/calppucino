@@ -11,11 +11,49 @@ import { teal } from '@mui/material/colors';
 
 export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     const phNumberRef = useRef(null);
+    if(isMobile) {
+        return (
+            <>
+            {!isSoldOut && (<Typography
+                variant="subtitle1" 
+                align="center" 
+                color={teal[700]} 
+                component="p"            
+                sx={{ marginTop: 2}}
+                ref={phNumberRef}
+            >
+              +1-917-679-1655
+            </Typography>)}
+            <MobileViewButtonWrapper>             
+            <JelloAnimationsWrapper>
+              <Button 
+                variant="outlined"
+                color="error"
+                href="tel:9176791655"
+                disabled={isSoldOut}
+                id='offer-button_call-us'
+                style={{ alignSelf: 'center' }}>
+                Call us <WifiCalling3Icon />
+              </Button>
+            </JelloAnimationsWrapper>
+            <HeadShakeAnimationWrapper>  
+            <Button 
+              variant="outlined"
+              color="error"
+              disabled={isSoldOut}
+              href="sms:+19176791655?body=Hi%20I%20would%20like%20to%20place%20an%20order%20for%20a%20coffee.%20My%20name%20is%20"
+              id="offer-button_text-us"
+              style={{ alignSelf: 'center' }}>
+                      Text us <TextsmsOutlinedIcon />
+            </Button>
+            </HeadShakeAnimationWrapper>
+            </MobileViewButtonWrapper>
+            </>
+        )
+    }
     return (
         <>
-        {!isMobile ? 
-           (<DesktopViewButtonWrapper>
-            <HeadShakeAnimationWrapper >
+           <DesktopViewButtonWrapper>
             <Button 
               variant="outlined"
               color="error"
@@ -26,62 +64,28 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
               style={{ alignSelf: 'center' }}>
               <LocalCafeTwoToneIcon /> Order My Cup
             </Button>
-            </HeadShakeAnimationWrapper>  
-        </DesktopViewButtonWrapper>) : (
-        <>
-{!isSoldOut && (<Typography
-    variant="subtitle1" 
-    align="center" 
-    color={teal[700]} 
-    component="p"            
-    sx={{ marginTop: 2}}
-    ref={phNumberRef}
->
-  +1-917-679-1655
-</Typography>)}
-<MobileViewButtonWrapper>             
-<JelloAnimationsWrapper>
-  <Button 
-    variant="outlined"
-    color="error"
-    href="tel:9176791655"
-    disabled={isSoldOut}
-    id='offer-button_call-us'
-    style={{ alignSelf: 'center' }}>
-    Call us <WifiCalling3Icon />
-  </Button>
-</JelloAnimationsWrapper>
-<HeadShakeAnimationWrapper>  
-<Button 
-  variant="outlined"
-  color="error"
-  disabled={isSoldOut}
-  href="sms:+19176791655?body=Hi%20I%20would%20like%20to%20place%20an%20order%20for%20a%20coffee.%20My%20name%20is%20"
-  id="offer-button_text-us"
-  style={{ alignSelf: 'center' }}>
-          Text us <TextsmsOutlinedIcon />
-</Button>
-</HeadShakeAnimationWrapper>
-</MobileViewButtonWrapper>
-</>
+            </DesktopViewButtonWrapper>
+        </>
         )
-        }
-      </>
-    )
   }
 
   const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
     gap: 16px;    
-  gap: 16px;
-    gap: 16px;    
   `
   const MobileViewButtonWrapper = styled(ButtonWrapper)``
   const DesktopViewButtonWrapper = styled(ButtonWrapper)`
     margin: 8px;
+    animation-duration: .7s;
+    animation-delay: 1.5s;
+    animation-iteration-count: 2;
+    animation-name: ${headshakeAnimation};
+    transform-origin: center;
+    align-self: center;
   `
 
+  // TODO refer styles/AnimationsStyled.tsx
   const JelloAnimationsWrapper = styled.div`
     animation-duration: .7s;
     animation-delay: 1.5s;
@@ -91,12 +95,9 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     align-self: center;
 `
 
-// Figure out a way to pass this a prop to the styled emotion component
-const buttonHandshakeAnimationDelay = isMobile ? `3.5s` : `1.5s`;
-
 const HeadShakeAnimationWrapper = styled.div`
   animation-duration: .7s;
-  animation-delay: ${buttonHandshakeAnimationDelay};
+  animation-delay: 3.5s;
   animation-iteration-count: 2;
   animation-name: ${headshakeAnimation};
   transform-origin: center;

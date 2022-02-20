@@ -1,4 +1,9 @@
 import { keyframes } from '@emotion/react'
+/* 
+  TODO: figure out a way to pass props to styled components
+        so that we can standardize the animations components 
+        do away with code bloat in components/WIPComponents/CTAButtons.tsx
+*/
 
 //Animations
 export const headshakeAnimation = keyframes`
