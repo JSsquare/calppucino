@@ -1,4 +1,20 @@
-export const APP_CONSTANTS = {
+type ConstantsType = {
+    WIP: boolean
+    HEADER_TITLE: string
+    WIP_DESCRIPTION: string
+    SOLDOUT_DESCRIPTION: string
+    OFFER_INFO: {
+        OFFER_ACTIVE: boolean
+        ITEM: string
+        ITEM_DESC: string
+        REG_PRICE: string
+        SALE_PRICE: string
+        SOLD_OUT: boolean
+     
+    }
+}
+
+export const APP_CONSTANTS: ConstantsType = {
     WIP: true,
     HEADER_TITLE: ' Coffee Giveaway ',
     WIP_DESCRIPTION: 'Order your FREE coffee at UC Village today!',
