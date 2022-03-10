@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { teal, red } from '@mui/material/colors';
+import { teal, red, deepPurple } from '@mui/material/colors';
 import styled from '@emotion/styled'
 import CelebrationTwoToneIcon from '@mui/icons-material/CelebrationTwoTone';
 import { Typography } from '@mui/material';
@@ -8,7 +8,6 @@ import { APP_CONSTANTS } from '../../app/constants';
 import OfferItemCard from './OfferItemCard';
 import { pluralize } from '../../app/utils/format';
 import { CTAButtons } from './CTAButtons';
-import { useRef } from 'react';
 
 const WorkInProgress = () => {
   const { data: offerItems } = useQuery('getOfferItems', async () => {
@@ -22,14 +21,15 @@ const WorkInProgress = () => {
     const { OFFER_INFO } = APP_CONSTANTS
     const isOfferActive = OFFER_INFO.OFFER_ACTIVE
     const isSoldOut = OFFER_INFO.SOLD_OUT || numberOfCupsLeft <= 0
-
+    const fontColor = deepPurple[900]
     return (
         <WIPContainer>
         <Typography
           component="h1"
           variant="h4"
           align="center"
-          color={teal[700]}
+          color={fontColor}
+          sx={{backgroundColor: deepPurple[100], borderRadius: 2}}
           gutterBottom
         >
           <CelebrationTwoToneIcon fontSize="large"/>
@@ -37,12 +37,12 @@ const WorkInProgress = () => {
           <CelebrationTwoToneIcon fontSize="large"/>
 
         </Typography>
-        <Typography variant="h6" align="center" color={isSoldOut ? red[500] : teal[700]}  component="p" gutterBottom>
+        <Typography  variant="h6" align="center" color={isSoldOut ? red[500] : fontColor}  component="p" gutterBottom>
           {isSoldOut ? APP_CONSTANTS.SOLDOUT_DESCRIPTION : APP_CONSTANTS.WIP_DESCRIPTION}          
         </Typography>
 
         <CTAButtons isSoldOut={isSoldOut} />
-        {isOfferActive ? <OfferItemCard isSoldOut={isSoldOut} cupsLeftText={cupsLeftText} /> : <Menu />}     
+        {isOfferActive ? <OfferItemCard isSoldOut={isSoldOut} cupsLeftText={cupsLeftText} fontColor={fontColor}/> : <Menu />}     
         </WIPContainer>
     );
 };

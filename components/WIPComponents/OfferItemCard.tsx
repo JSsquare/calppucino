@@ -6,8 +6,9 @@ import { APP_CONSTANTS } from '../../app/constants';
 type Props = {
   isSoldOut: boolean
   cupsLeftText: string
+  fontColor: string
 }
-const OfferItemCard = ({ isSoldOut, cupsLeftText }: Props) => {  
+const OfferItemCard = ({ isSoldOut, cupsLeftText, fontColor }: Props) => {  
   const { OFFER_INFO } = APP_CONSTANTS
   
 return (
@@ -15,7 +16,7 @@ return (
         <a href="sms:+19176791655" id="offer-item-card-link">
             <Grid container alignItems="center" id="offer-item-card-item">  
             <Grid item xs>
-            <CardHeader title={OFFER_INFO.ITEM} />
+            <CardHeader title={OFFER_INFO.ITEM}/>
             </Grid>
             <Grid item>
             <Typography 
@@ -36,7 +37,8 @@ return (
             <Typography
                 variant="body2" 
                 color="text.secondary" 
-                component="div">
+                component="div"
+                sx={{marginTop: '8px'}}>
                 {OFFER_INFO.ITEM_DESC}<br/>  Order now!
             </Typography>
             </a>
@@ -52,10 +54,11 @@ const CardWrapper = styled(Card)`
   position: relative;
   margin-top: 32px;
   padding: 0 1rem 3rem 1rem;
-  border-radius: 8px;  
+  border-radius: 8px;
   min-height: 100px;
-  &:hover {
-    cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  cursor: pointer;
+  &:hover {    
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 `
