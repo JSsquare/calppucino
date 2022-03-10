@@ -29,7 +29,7 @@ const WorkInProgress = () => {
           variant="h4"
           align="center"
           color={fontColor}
-          sx={{backgroundColor: deepPurple[100], borderRadius: 2}}
+          sx={{backgroundColor: deepPurple[100], borderRadius: 2, marginTop: 1, padding: '8px 2px'}}
           gutterBottom
         >
           <CelebrationTwoToneIcon fontSize="large"/>

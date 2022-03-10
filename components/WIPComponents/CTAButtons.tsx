@@ -7,7 +7,7 @@ import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 import LocalCafeTwoToneIcon from '@mui/icons-material/LocalCafeTwoTone';
 import { headshakeAnimation, jelloAnimation } from '../../styles/AnimationsStyled';
-import { teal } from '@mui/material/colors';
+import { deepPurple, teal } from '@mui/material/colors';
 
 export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     const phNumberRef = useRef(null);
@@ -17,7 +17,7 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
             {!isSoldOut && (<Typography
                 variant="subtitle1" 
                 align="center" 
-                color={teal[700]} 
+                color={deepPurple[900]} 
                 component="p"            
                 sx={{ marginTop: 2}}
                 ref={phNumberRef}
