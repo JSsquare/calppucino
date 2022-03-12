@@ -7,7 +7,7 @@ import WifiCalling3Icon from '@mui/icons-material/WifiCalling3';
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 import LocalCafeTwoToneIcon from '@mui/icons-material/LocalCafeTwoTone';
 import { headshakeAnimation, jelloAnimation } from '../../styles/AnimationsStyled';
-import { deepPurple, teal } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
 
 export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
     const phNumberRef = useRef(null);
@@ -75,7 +75,7 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
             </DesktopViewButtonWrapper>
         </>
         )
-  }
+}
 
   const ButtonWrapper = styled.div`
     display: flex;

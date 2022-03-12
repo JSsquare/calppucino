@@ -22,9 +22,9 @@ export const APP_CONSTANTS: ConstantsType = {
     OFFER_INFO: {
         OFFER_ACTIVE: true,
         ITEM: 'Calpresso',
-        ITEM_DESC: `Just a fancy name for freshly brewed coffee with an Aeropress.`,
-        REG_PRICE: '$1.99',
-        SALE_PRICE: 'only 1 cup left!',
+        ITEM_DESC: `A fancy name for freshly brewed coffee in an Aeropress.`,
+        REG_PRICE: '$3.99',
+        SALE_PRICE: '$1.99',
         SOLD_OUT: false
     }
 }

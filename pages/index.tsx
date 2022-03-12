@@ -9,9 +9,10 @@ import { APP_CONSTANTS } from '../app/constants';
     - then dehydrating those queries to the queryClient
 */
 export async function getServerSideProps() {
-  const { OFFER_INFO } = APP_CONSTANTS
+  const { OFFER_INFO, WIP } = APP_CONSTANTS
+  const workInProgressAndOfferActive = WIP && OFFER_INFO.OFFER_ACTIVE
   const queryClient = new QueryClient()
-  if(OFFER_INFO.OFFER_ACTIVE) {
+  if(workInProgressAndOfferActive) {
     await queryClient.prefetchQuery('getOfferItems', async () => {
       const res = await fetch(`${process.env.HOST}/api/offer-items`)
       const { data } = await res.json()

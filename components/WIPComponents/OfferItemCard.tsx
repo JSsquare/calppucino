@@ -1,5 +1,5 @@
 import { Card, CardHeader, Divider, Grid, Typography } from '@mui/material';
-import { red } from '@mui/material/colors';
+import { red, grey } from '@mui/material/colors';
 import { styled } from '@mui/system';
 import { APP_CONSTANTS } from '../../app/constants';
 
@@ -15,23 +15,38 @@ return (
         <CardWrapper id="offer-item-card-wrapper">
         <a href="sms:+19176791655" id="offer-item-card-link">
             <Grid container alignItems="center" id="offer-item-card-item">  
-            <Grid item xs>
-            <CardHeader title={OFFER_INFO.ITEM}/>
-            </Grid>
-            <Grid item>
-            <Typography 
-                variant="subtitle1" 
-                component="p"
-                sx={{textDecoration: 'line-through'}}>
-                    {OFFER_INFO.REG_PRICE}
-            </Typography>
+              <Grid item xs>
+                <CardHeader title={OFFER_INFO.ITEM}/>
+              </Grid>
 
-            <Typography 
-                variant="subtitle2" 
-                component="p"
-                color={red[700]}
-                >{isSoldOut ? 'Sorry! SOLD OUT' : cupsLeftText} &nbsp;</Typography> 
-            </Grid>
+              <Grid item>
+              <Grid   
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              gap={1}>
+                <Typography 
+                    variant="subtitle1" 
+                    component="p"
+                >
+                        {OFFER_INFO.SALE_PRICE}
+                </Typography>            
+                <Typography 
+                    variant="subtitle1" 
+                    component="p"
+                    color={grey[600]}
+                    sx={{textDecoration: 'line-through'}}>
+                        {OFFER_INFO.REG_PRICE}
+                </Typography>
+              </Grid>
+                <Typography 
+                    variant="subtitle2" 
+                    component="p"
+                    color={red[700]}>
+                      {isSoldOut ? 'Sorry! SOLD OUT' : cupsLeftText} &nbsp;
+                </Typography> 
+              </Grid>
             </Grid>
             <Divider />
             <Typography
