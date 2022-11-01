@@ -8,8 +8,9 @@ import { Typography } from '@mui/material';
 import { APP_CONSTANTS } from '../app/constants'
 import WorkInProgress from './WIPComponents/WorkInProgress';
 
-export const HomePage: NextPage = () => {
+export const HomePage: NextPage = (props) => {
     const { WIP, HEADER_TITLE } = APP_CONSTANTS
+    console.log(props);
     
     if(WIP) return (
       <div className={styles.container}>

@@ -12,7 +12,7 @@ import { CTAButtons } from './CTAButtons';
 const WorkInProgress = () => {
   const { data: offerItems } = useQuery('getOfferItems', async () => {
     const res = await fetch(`${process.env.HOST}/api/offer-items`)
-    return res.json()    
+    return res.json()
   })
   const numberOfCupsLeft = offerItems ? offerItems[0]?.cupsLeft : 0
   const cupsLeftText = `Only ${pluralize(numberOfCupsLeft, 'cup')} left!`
@@ -20,7 +20,7 @@ const WorkInProgress = () => {
 
     const { OFFER_INFO } = APP_CONSTANTS
     const isOfferActive = OFFER_INFO.OFFER_ACTIVE
-    const isSoldOut = OFFER_INFO.SOLD_OUT || numberOfCupsLeft <= 0
+    const isSoldOut = OFFER_INFO.OFFER_SOLD_OUT || numberOfCupsLeft <= 0
     const fontColor = deepPurple[900]
     return (
         <WIPContainer>

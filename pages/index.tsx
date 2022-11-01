@@ -19,11 +19,13 @@ export async function getServerSideProps() {
       return data
     })
   } else {
-    await queryClient.prefetchQuery('getMenu', async () => {
-      const res = await fetch(`${process.env.HOST}/api/menu`)
-      const { data } = await res.json()
-      return data
-    })
+    if(process.env.HOST) {
+      await queryClient.prefetchQuery('getMenu', async () => {
+        const res = await fetch(`${process.env.HOST}/api/menu`)
+        const { data } = await res.json()
+        return data
+      })
+    }
   }
   const dehydrateState = (queryClient: any) => JSON.parse(JSON.stringify(dehydrate(queryClient)))
   

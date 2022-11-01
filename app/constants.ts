@@ -5,11 +5,11 @@ type ConstantsType = {
     SOLDOUT_DESCRIPTION: string
     OFFER_INFO: {
         OFFER_ACTIVE: boolean
-        ITEM: string
-        ITEM_DESC: string
-        REG_PRICE: string
-        SALE_PRICE: string
-        SOLD_OUT: boolean
+        OFFER_ITEM: string
+        OFFER_ITEM_DESCRIPTION: string
+        OFFER_REG_PRICE: string
+        OFFER_SALE_PRICE: string
+        OFFER_SOLD_OUT: boolean
      
     }
 }
@@ -17,28 +17,31 @@ type ConstantsType = {
 export const APP_CONSTANTS: ConstantsType = {
     WIP: true,
     HEADER_TITLE: ' Coffee Giveaway ',
-    WIP_DESCRIPTION: 'Order your FREE coffee at UC Village today!',
-    SOLDOUT_DESCRIPTION: 'Sorry! We SOLD OUT for today. Come Back tomorrow',
+    WIP_DESCRIPTION: 'Claim your FREE coffee Now!',
+    SOLDOUT_DESCRIPTION: 'Sorry! We SOLD OUT for today. Come Back tomorrow',    
     OFFER_INFO: {
-        OFFER_ACTIVE: true,
-        ITEM: 'Calpresso',
-        ITEM_DESC: `A fancy name for freshly brewed coffee in an Aeropress.`,
-        REG_PRICE: '$3.99',
-        SALE_PRICE: '$1.99',
-        SOLD_OUT: true
+        OFFER_ACTIVE: true, // Offer should be active only when WIP is true, else it is meaningless
+        OFFER_ITEM: 'Calpresso',
+        OFFER_ITEM_DESCRIPTION: `A fancy name for freshly brewed coffee in an Aeropress.`,
+        OFFER_REG_PRICE: '$3.99',
+        OFFER_SALE_PRICE: '$1.99',
+        OFFER_SOLD_OUT: false // If sold out is false it displays the numofcups left from the DB (/offer-items call)
     }
 }
 
 const customers = [
     {
         name: 'Sara/Andreas',
-        number: '3413338496'
+        number: '3413338496',
+        comments: 'UC village'
     },
     {
         name: 'tbd',
-        number: '7144253992'
+        number: '7144253992',
+        comments: 'UC village'
     }, {
         name: 'Aditya',
-        number: '5105705498'
+        number: '5105705498',
+        comments: 'UC village'
     }
 ]

@@ -26,35 +26,27 @@ const Menu = () => {
     return res.json()
   })
 
-  const dispatch = useDispatch()
-  useEffect(() => {        
-      dispatch(addMenuItems(menuItems))
-  }, [menuItems, dispatch])
-
   const { WIP } = APP_CONSTANTS
-  const menuFromState = useSelector(getMenu)
   const handleAddToCart = (item: any) => {
-    const { _id: menuItemId, itemName: menuItemName, itemTraits: { price } } = item
-    dispatch(updateAddToCartState(menuItemId))
+    const { _id: menuItemId, itemName: menuItemName, itemTraits: { price } } = item    
     const cartItemPayload = {
       menuItemId,
       menuItemName,
       price: Number(price),
       quantity: 1
     }
-    dispatch(addItemToCart(cartItemPayload))
   }  
     return (
     <main className={styles.main}>
         <div className={styles.grid}>
-            {menuFromState.length === 0 && 
+            {menuItems.length === 0 && 
               <Box sx={{ display: 'flex' }}>
                 <CircularProgress />
               </Box>
             }
-            {menuFromState?.length > 0 && (
+            {menuItems?.length > 0 && (
                     <div >
-                    {menuFromState.map((item: any, i: number) => (                    
+                    {menuItems.map((item: any, i: number) => (                    
                     <MenuCardMUI key={item._id} raised={true}>
 
                     <Grid container alignItems="center">  
@@ -69,7 +61,7 @@ const Menu = () => {
                     <Typography variant="body2" color="text.secondary" component="div">
                         {item.itemDescription}
                     </Typography>
-                    {!WIP && 
+                    {
                                         <AddtoCartButtonWrapper> 
                                         {item.addToCartState ? <CheckCircleOutlineRoundedIcon fontSize="large" color="success"/> :        
                                         (<Fab 

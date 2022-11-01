@@ -8,7 +8,7 @@ type Props = {
   cupsLeftText: string
   fontColor: string
 }
-const OfferItemCard = ({ isSoldOut, cupsLeftText, fontColor }: Props) => {  
+const OfferItemCard = ({ isSoldOut, cupsLeftText }: Props) => {  
   const { OFFER_INFO } = APP_CONSTANTS
   
 return (
@@ -16,7 +16,7 @@ return (
         <a href="sms:+19176791655" id="offer-item-card-link">
             <Grid container alignItems="center" id="offer-item-card-item">  
               <Grid item xs>
-                <CardHeader title={OFFER_INFO.ITEM}/>
+                <CardHeader title={OFFER_INFO.OFFER_ITEM}/>
               </Grid>
 
               <Grid item>
@@ -30,14 +30,14 @@ return (
                     variant="subtitle1" 
                     component="p"
                 >
-                        {OFFER_INFO.SALE_PRICE}
+                        {OFFER_INFO.OFFER_SALE_PRICE}
                 </Typography>            
                 <Typography 
                     variant="subtitle1" 
                     component="p"
                     color={grey[600]}
                     sx={{textDecoration: 'line-through'}}>
-                        {OFFER_INFO.REG_PRICE}
+                        {OFFER_INFO.OFFER_REG_PRICE}
                 </Typography>
               </Grid>
                 <Typography 
@@ -54,7 +54,7 @@ return (
                 color="text.secondary" 
                 component="div"
                 sx={{marginTop: '8px'}}>
-                {OFFER_INFO.ITEM_DESC}<br/>  Order now!
+                {OFFER_INFO.OFFER_ITEM_DESCRIPTION}<br/>  Order now!
             </Typography>
             </a>
         </CardWrapper>
