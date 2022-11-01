@@ -9,12 +9,7 @@ import CardHeader from '@mui/material/CardHeader';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
-import { useDispatch } from 'react-redux';
-import { addItemToCart } from '../features/cart/cartSlice'
-import { addMenuItems, updateAddToCartState  } from '../features/menu/menuSlice';
-import { getMenu } from '../features/menu/menuSelectors';
 import { useQuery } from 'react-query';
-import { useEffect } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { capitalizeFirstLetter } from '../app/utils/format';

@@ -9,6 +9,10 @@ import OfferItemCard from './OfferItemCard';
 import { pluralize } from '../../app/utils/format';
 import { CTAButtons } from './CTAButtons';
 
+const HeaderBgStyles = 
+{
+  backgroundColor: deepPurple[100], borderRadius: 3, marginTop: 1, padding: '8px 2px'
+}
 const WorkInProgress = () => {
   const { data: offerItems } = useQuery('getOfferItems', async () => {
     const res = await fetch(`${process.env.HOST}/api/offer-items`)
@@ -22,6 +26,7 @@ const WorkInProgress = () => {
     const isOfferActive = OFFER_INFO.OFFER_ACTIVE
     const isSoldOut = OFFER_INFO.OFFER_SOLD_OUT || numberOfCupsLeft <= 0
     const fontColor = deepPurple[900]
+    const attentionFontColor = isSoldOut ? red[500] : fontColor
     return (
         <WIPContainer>
         <Typography
@@ -29,7 +34,7 @@ const WorkInProgress = () => {
           variant="h4"
           align="center"
           color={fontColor}
-          sx={{backgroundColor: deepPurple[100], borderRadius: 2, marginTop: 1, padding: '8px 2px'}}
+          sx={HeaderBgStyles}
           gutterBottom
         >
           <CelebrationTwoToneIcon fontSize="large"/>
@@ -37,7 +42,7 @@ const WorkInProgress = () => {
           <CelebrationTwoToneIcon fontSize="large"/>
 
         </Typography>
-        <Typography  variant="h6" align="center" color={isSoldOut ? red[500] : fontColor}  component="p" gutterBottom>
+        <Typography variant="h6" align="center" color={attentionFontColor}  component="p" gutterBottom>
           {isSoldOut ? APP_CONSTANTS.SOLDOUT_DESCRIPTION : APP_CONSTANTS.WIP_DESCRIPTION}          
         </Typography>
 

@@ -84,7 +84,7 @@ export const CTAButtons = ({ isSoldOut }: Record<string, boolean>) => {
   `
   const MobileViewButtonWrapper = styled(ButtonWrapper)``
   const DesktopViewButtonWrapper = styled(ButtonWrapper)` 
-    margin: 8px;
+    margin: 24px 0 0;
   `
   const OrderButton = styled(Button)`
     animation-duration: .7s;

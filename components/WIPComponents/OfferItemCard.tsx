@@ -67,7 +67,7 @@ export default OfferItemCard;
 
 const CardWrapper = styled(Card)`
   position: relative;
-  margin-top: 32px;
+  margin-top: 8px;
   padding: 0 1rem 3rem 1rem;
   border-radius: 8px;
   min-height: 100px;
