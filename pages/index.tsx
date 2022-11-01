@@ -25,8 +25,9 @@ export async function getServerSideProps() {
       return data
     })
   }
+  const dehydrateState = (queryClient: any) => JSON.parse(JSON.stringify(dehydrate(queryClient)))
   
-  return { props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) } }
+  return { props: { dehydratedState: dehydrateState(queryClient) } }
 }
 
 export default HomePage

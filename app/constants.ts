@@ -25,7 +25,7 @@ export const APP_CONSTANTS: ConstantsType = {
         ITEM_DESC: `A fancy name for freshly brewed coffee in an Aeropress.`,
         REG_PRICE: '$3.99',
         SALE_PRICE: '$1.99',
-        SOLD_OUT: false
+        SOLD_OUT: true
     }
 }
 
